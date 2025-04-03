@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from bs4 import BeautifulSoup
 import requests
 import json
 
 app = Flask(__name__)
-
+CORS(app, origins=["https://example.com"])
 
 @app.route('/scrape', methods=['GET'])
 def index():
@@ -40,4 +41,4 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8080,debug=True)
